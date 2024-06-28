@@ -17,7 +17,18 @@ describe('Grocery Store', () => {
         cy.get('.products > .product').should('exist');
     });
 
-    it.only('should display message that the searching product does not exist', () => {
+    it.only('should display several products with same characters', () => {
+        cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
+
+        // Type "Ca" in search input field
+        cy.get('.search-keyword').type('Ca');
+
+        // Check that list of products contains more then 1 element
+        cy.get('.products > .product').should('have.length.above', 1);
+
+    });
+
+    it('should display message that the searching product does not exist', () => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
 
         // Type "Nothing" in search input field
