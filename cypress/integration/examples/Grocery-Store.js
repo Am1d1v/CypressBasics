@@ -30,7 +30,7 @@ describe('Grocery Store', () => {
 
     });
 
-    it.only('should display one product on the page', () => {
+    it('should display one product on the page', () => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
 
         // Check that at least 1 product exist
@@ -46,6 +46,18 @@ describe('Grocery Store', () => {
 
         // Product doesn't exist
         cy.get('.no-results > h2').contains('Sorry, no products matched your search!');
+    });
+
+    it.only('should add certain product to the cart', () => {
+        cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
+
+        cy.wait(1000);
+
+        // Select first product and add it to the cart
+        cy.get('.products').find('.product').eq(0).contains('ADD TO CART').click();
+
+        // Product added to the cart 
+        cy.get('.products').find('.product').eq(0).contains('ADDED');
     });
 
 });
