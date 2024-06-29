@@ -58,6 +58,9 @@ describe('Grocery Store', () => {
 
         // Product added to the cart 
         cy.get('.products').find('.product').eq(0).contains('ADDED');
+
+        // Display quantity of adeed products in the cart
+        cy.get('.cart-info').contains('1');
     });
 
 });
