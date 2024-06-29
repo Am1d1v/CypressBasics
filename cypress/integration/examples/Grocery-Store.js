@@ -17,14 +17,24 @@ describe('Grocery Store', () => {
         cy.get('.products > .product').should('exist');
     });
 
-    it.only('should display several products with same characters', () => {
+    it('should display several products with same characters', () => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
 
         // Type "Ca" in search input field
         cy.get('.search-keyword').type('Ca');
 
+        cy.wait(1000);
+
         // Check that list of products contains more then 1 element
         cy.get('.products > .product').should('have.length.above', 1);
+
+    });
+
+    it.only('should display one product on the page', () => {
+        cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
+
+        // Check that at least 1 product exist
+        cy.get('.products').find('.product').should('have.length.above', 1);
 
     });
 
