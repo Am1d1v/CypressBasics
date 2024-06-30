@@ -55,10 +55,10 @@ describe('Grocery Store', () => {
 
         // Select first product and add it to the cart
         cy.get('.products').find('.product').eq(0).contains('ADD TO CART').click();
-
+        
         // Product added to the cart 
         cy.get('.products').find('.product').eq(0).contains('ADDED');
-
+        
         // Display quantity of adeed products in the cart
         cy.get('.cart-info').contains('1');
     });
