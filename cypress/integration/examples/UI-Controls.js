@@ -35,7 +35,11 @@ describe('UI Controls', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice');
 
         // Select dropdowm menu
-        cy.get('#dropdown-class-example').select('Option1');
+        // Select option by text
+        //cy.get('#dropdown-class-example').select('Option1');
+
+        // Select option by value
+        cy.get('#dropdown-class-example').select('option2').should('have.value', 'option2');
     })
 
 
