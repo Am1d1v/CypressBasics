@@ -52,6 +52,8 @@ describe('UI Controls', () => {
         cy.get('.ui-menu-item div').each(el => {
             if(el.text() === 'Australia') el.click();
         })
+
+        cy.get('#autocomplete').should('have.value', 'Australia');
     })
 
 
