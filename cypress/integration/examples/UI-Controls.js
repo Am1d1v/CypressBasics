@@ -42,7 +42,7 @@ describe('UI Controls', () => {
         cy.get('#dropdown-class-example').select('option2').should('have.value', 'option2');
     })
 
-    it.only('should input "Aus" and select "Australia" in dynamic dropdown menu', () => {
+    it('should input "Aus" and select "Australia" in dynamic dropdown menu', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice');
 
         // Type "Aus" in the input field
@@ -54,6 +54,20 @@ describe('UI Controls', () => {
         })
 
         cy.get('#autocomplete').should('have.value', 'Australia');
+    })
+
+    it.only('should switch visible/invisible input field', () => {
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice');
+
+        // Input field is visible
+        cy.get('#displayed-text').should('be.visible');
+
+        // Hide input field
+        cy.get('#hide-textbox').click()
+
+        // Input field is not visible
+        cy.get('#displayed-text').should('not.be.visible');
+
     })
 
 
