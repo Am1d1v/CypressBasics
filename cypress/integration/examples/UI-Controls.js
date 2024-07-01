@@ -10,7 +10,7 @@ describe('UI Controls', () => {
         cy.get('#checkBoxOption3').check().should('be.checked').and('have.value', 'option3');;
     });
 
-    it.only('should uncheck certain check boxes', () => {
+    it('should uncheck certain check boxes', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice');
 
         // Select 1 and 3 check boxes
@@ -29,6 +29,13 @@ describe('UI Controls', () => {
 
         cy.get('input:checkbox').uncheck(['option1', 'option3']).should('not.be.checked');
 
+    })
+
+    it.only('should select Option 1 in static dropdown menu', () => {
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice');
+
+        // Select dropdowm menu
+        cy.get('#dropdown-class-example').select('Option1');
     })
 
 
