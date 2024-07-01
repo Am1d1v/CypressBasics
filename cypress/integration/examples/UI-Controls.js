@@ -63,11 +63,16 @@ describe('UI Controls', () => {
         cy.get('#displayed-text').should('be.visible');
 
         // Hide input field
-        cy.get('#hide-textbox').click()
+        cy.get('#hide-textbox').click();
 
         // Input field is not visible
         cy.get('#displayed-text').should('not.be.visible');
 
+        // Show input field
+        cy.get('#show-textbox').click();
+
+        // Input field is visible
+        cy.get('#displayed-text').should('be.visible');
     })
 
 
