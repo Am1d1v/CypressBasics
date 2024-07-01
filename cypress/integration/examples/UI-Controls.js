@@ -31,7 +31,7 @@ describe('UI Controls', () => {
 
     })
 
-    it.only('should select Option 1 in static dropdown menu', () => {
+    it('should select Option 1 in static dropdown menu', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice');
 
         // Select dropdowm menu
@@ -40,6 +40,18 @@ describe('UI Controls', () => {
 
         // Select option by value
         cy.get('#dropdown-class-example').select('option2').should('have.value', 'option2');
+    })
+
+    it.only('should input "Aus" and select "Australia" in dynamic dropdown menu', () => {
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice');
+
+        // Type "Aus" in the input field
+        cy.get('#autocomplete').type('Aus');
+
+        // Select "Australia" from the list of options
+        cy.get('.ui-menu-item div').each(el => {
+            if(el.text() === 'Australia') el.click();
+        })
     })
 
 
