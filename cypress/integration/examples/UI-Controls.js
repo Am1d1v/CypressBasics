@@ -75,7 +75,7 @@ describe('UI Controls', () => {
         cy.get('#displayed-text').should('be.visible');
     })
 
-    it.only('should click on alert button', () => {
+    it('should click on alert button', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice');
 
         cy.get('input#name').type('UserName');
@@ -86,7 +86,20 @@ describe('UI Controls', () => {
         cy.on('window:alert', event => {
             expect(event).contains('Hello UserName, share this practice page');
         });
-    })
+    });
+
+    it.only('should click on confirm button', () => {
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice');
+
+        cy.get('input#name').type('UserName');
+
+        cy.get('#confirmbtn').click();
+
+        // Alert message displayed
+        cy.on('window:confirm', event => {
+            expect(event).to.equal('Hello UserName, Are you sure you want to confirm?');
+        });
+    });
 
 
 
