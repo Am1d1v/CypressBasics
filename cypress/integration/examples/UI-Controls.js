@@ -56,7 +56,7 @@ describe('UI Controls', () => {
         cy.get('#autocomplete').should('have.value', 'Australia');
     })
 
-    it.only('should switch visible/invisible input field', () => {
+    it('should switch visible/invisible input field', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice');
 
         // Input field is visible
@@ -73,6 +73,19 @@ describe('UI Controls', () => {
 
         // Input field is visible
         cy.get('#displayed-text').should('be.visible');
+    })
+
+    it.only('should click on alert button', () => {
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice');
+
+        cy.get('input#name').type('UserName');
+
+        cy.get('#alertbtn').click();
+
+        // Alert message displayed
+        cy.on('window:alert', event => {
+            expect(event).contains('Hello UserName, share this practice page');
+        });
     })
 
 
