@@ -2,7 +2,7 @@
 
 describe('Handle Child Windows', () => {
 
-    it('Should handle child window', () => {
+    it('Should handle "Open Tab" button', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
 
         cy.get('#opentab').invoke('removeAttr', 'target').click();
