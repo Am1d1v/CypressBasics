@@ -8,7 +8,8 @@ describe('Handle Frames', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
 
         cy.frameLoaded('#courses-iframe');
-        cy.iframe();
+        cy.iframe().find('a[href="mentorship"]')
+
     });
 
 });
