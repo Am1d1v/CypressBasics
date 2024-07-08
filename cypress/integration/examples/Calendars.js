@@ -48,8 +48,18 @@ describe('Calendars handle', () => {
         // Select certain year
         cy.contains('button', year).click();
 
-        // Month selection assertion
+        // Year selection assertion
         cy.get('.react-calendar__navigation__label').then((elem) => expect(elem.text()).eq(year));
+
+        // Select certain month
+        cy.get('.react-calendar__year-view__months').then((monthsElem) => {
+            monthsElem.children()[month].click();
+        });
+
+        // Select certain day
+        cy.get('.react-calendar__month-view__days').then(dayElem => {
+            dayElem.children()[day].click();
+        })
 
     });
 
