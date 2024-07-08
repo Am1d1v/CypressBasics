@@ -28,6 +28,11 @@ describe('Calendars handle', () => {
     it.only('should click on certain date in calendar', () => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/offers');
 
+        // Hardcoded calendar data
+        const month = '6';
+        const day = '10';
+        const year = '2025';
+
         // Click on calendar
         cy.get('.react-date-picker__wrapper').click();
 
@@ -39,6 +44,12 @@ describe('Calendars handle', () => {
 
         // Click on the year in calendar
         cy.get('.react-calendar__navigation__label').click();
+
+        // Select certain year
+        cy.contains('button', year).click();
+
+        // Month selection assertion
+        cy.get('.react-calendar__navigation__label').then((elem) => expect(elem.text()).eq(year));
 
     });
 
