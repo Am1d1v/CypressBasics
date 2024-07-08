@@ -2,7 +2,7 @@
 
 describe('Calendars handle', () => {
 
-    it('should choose certain date in calendar', () => {
+    it('should type certain date in calendar', () => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/offers');
 
         // Calendar is hidden
@@ -22,6 +22,23 @@ describe('Calendars handle', () => {
 
         // Type certain year
         cy.get('.react-date-picker__inputGroup__year').type('2024');
+
+    });
+
+    it.only('should click on certain date in calendar', () => {
+        cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/offers');
+
+        // Click on calendar
+        cy.get('.react-date-picker__wrapper').click();
+
+        // Click on month in calendar
+        cy.get('.react-calendar__navigation__label').click();
+
+        // All months appears after "Month" was clicked
+        cy.get('.react-calendar__viewContainer').should('be.visible');
+
+        // Click on the year in calendar
+        cy.get('.react-calendar__navigation__label').click();
 
     });
 
