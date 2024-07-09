@@ -88,8 +88,13 @@ describe('Calendars handle', () => {
         cy.get('.react-calendar__year-view__months__month').eq(month).click();    
 
         // Select certain day
-        cy.get('.react-calendar__month-view__days__day').eq(day).click();
+        //cy.get('.react-calendar__month-view__days__day').eq(day).click();
+        cy.contains('abbr', day).click();
 
+        // Date assertion
+        cy.get('.react-date-picker__inputGroup__input').each((elem, index) => {
+            cy.wrap(elem)
+        });
     });
 
     
