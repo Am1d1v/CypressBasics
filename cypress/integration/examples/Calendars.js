@@ -84,7 +84,11 @@ describe('Calendars handle', () => {
         // Select certain year
         cy.contains('button', year).click();
 
-       
+        // Select certain month
+        cy.get('.react-calendar__year-view__months__month').eq(month).click();    
+
+        // Select certain day
+        cy.get('.react-calendar__month-view__days__day').eq(day).click();
 
     });
 
