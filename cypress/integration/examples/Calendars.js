@@ -71,6 +71,7 @@ describe('Calendars handle', () => {
         const month = '6';
         const day = '10';
         const year = '2025';
+        const expectedList = [month, day, year];
 
         // Click on calendar
         cy.get('.react-date-picker__inputGroup').click();
@@ -85,7 +86,7 @@ describe('Calendars handle', () => {
         cy.contains('button', year).click();
 
         // Select certain month
-        cy.get('.react-calendar__year-view__months__month').eq(month).click();    
+        cy.get('.react-calendar__year-view__months__month').eq(+month - 1).click();    
 
         // Select certain day
         //cy.get('.react-calendar__month-view__days__day').eq(day).click();
@@ -93,7 +94,7 @@ describe('Calendars handle', () => {
 
         // Date assertion
         cy.get('.react-date-picker__inputGroup__input').each((elem, index) => {
-            cy.wrap(elem)
+            cy.wrap(elem).invoke('val').should('eq', expectedList[index]);
         });
     });
 
