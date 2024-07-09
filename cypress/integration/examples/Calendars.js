@@ -25,7 +25,7 @@ describe('Calendars handle', () => {
 
     });
 
-    it.only('should click on certain date in calendar', () => {
+    it('should click on certain date in calendar', () => {
         cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/offers');
 
         // Hardcoded calendar data
@@ -60,6 +60,31 @@ describe('Calendars handle', () => {
         cy.get('.react-calendar__month-view__days').then(dayElem => {
             dayElem.children()[day].click();
         })
+
+    });
+
+
+    it.only('should click on certain date in calendar', () => {
+        cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/offers');
+
+        // Hardcoded calendar data
+        const month = '6';
+        const day = '10';
+        const year = '2025';
+
+        // Click on calendar
+        cy.get('.react-date-picker__inputGroup').click();
+
+        // Click on month in calendar
+        cy.get('.react-calendar__navigation__label').click();
+
+        // Click on the year in calendar
+        cy.get('.react-calendar__navigation__label').click();
+
+        // Select certain year
+        cy.contains('button', year).click();
+
+       
 
     });
 
